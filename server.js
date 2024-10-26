@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const redis = require('redis');
+// const rateLimit = require('./rate-limiting')
+// const router = express.Router()
+const rateLimit = require('express-rate-limit')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,6 +18,14 @@ let redisClient;
 
     await redisClient.connect();
 })();
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests, please try again later.',  // return a custom error message for exceeding the limit
+})
+
+app.use(limiter)
 
 async function fetchApiData(country) {
     const apiResponse = await axios.get(
