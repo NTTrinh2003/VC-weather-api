@@ -23,4 +23,4 @@ Usage:
   ```
   localhost:3000/weather/:country
   ```
-  
+  + :country : Valid country name
