@@ -1,6 +1,6 @@
 # VC-weather-api
 
-An API Study Project
+An API Study Project  
 Link to description: https://roadmap.sh/projects/weather-api-wrapper-service
 
 The project using:
@@ -11,6 +11,7 @@ Requirement:
 + Installed Nodejs, npm
 
 Usage:
++ Clone repository
 + Install required packages:
   ```
   npm install express redis axios express-rate-limit dotenv
